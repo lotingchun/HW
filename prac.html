@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<head>
+	<title>互動式履歷表</title>
+
+	<style>
+		table,
+		th,
+		td {
+			border: #007799 2px solid
+		}
+
+		tr {
+			color: #7a7a52;
+		}
+
+
+		tr:nth-child(even):hover {
+			background: #FF7744;
+			color: #990000;
+			-webkit-transition: all 2s ease-out;
+			transition: all 2s ease-out;
+			font-size: 2em;
+			font-family: Microsoft JhengHei;
+		}
+
+		tr:nth-child(odd):hover {
+			background: #7744FF;
+			color: #220088;
+			-webkit-transition: all 2s ease-out;
+			transition: all 2s ease-out;
+			font-size: 2em;
+			font-family: Microsoft JhengHei;
+		}
+	</style>
+
+</head>
+
+<body bgcolor="#A9D0F5">
+
+	<script language="JavaScript">
+		document.fgColor = "black";
+
+
+		function createTable() {
+
+			var output = document.getElementById("output");
+			var username = document.form1.username.value;
+			username = document.createTextNode(username);
+			var birthday = document.form1.birthday.value;
+			birthday = document.createTextNode(birthday);
+			var sex = document.form1.sex.value;
+
+			var note = document.form1.note.value;
+			note = document.createTextNode(note);
+			var str = "";
+			var x = document.getElementsByName("hobby");
+			for (i in x) {
+				if (x[i].checked) {
+					str += x[i].value + ", ";
+				}
+			}
+			str = document.createTextNode(str);
+
+			sex = document.createTextNode(sex);
+			var cctable = document.createElement("table");
+			var ccTr = document.createElement("tr");
+			var ccTr1 = document.createElement("tr");
+			var ccTr2 = document.createElement("tr");
+			var ccTr3 = document.createElement("tr");
+			var ccTr4 = document.createElement("tr");
+			var ccTd = document.createElement("td");
+			var ccTd1 = document.createElement("td");
+			var ccTd2 = document.createElement("td");
+			var ccTd3 = document.createElement("td");
+			var ccTd4 = document.createElement("td");
+			var ccTd5 = document.createElement("td");
+			var ccTd6 = document.createElement("td");
+			var ccTd7 = document.createElement("td");
+			var ccTd8 = document.createElement("td");
+			var ccTd9 = document.createElement("td");
+			var name_title = document.createTextNode("姓名");
+			var birthday_title = document.createTextNode("生日");
+			var sex_title = document.createTextNode("性別");
+			var hobby_title = document.createTextNode("興趣");
+			var note_title = document.createTextNode("自我介紹");
+			output.appendChild(cctable);
+			cctable.appendChild(ccTr);
+			ccTr.appendChild(ccTd);
+			ccTr.appendChild(ccTd1);
+			ccTd.appendChild(name_title);
+			ccTd1.appendChild(username);
+			cctable.appendChild(ccTr1);
+			ccTr1.appendChild(ccTd2);
+			ccTr1.appendChild(ccTd3);
+			ccTd2.appendChild(birthday_title);
+			ccTd3.appendChild(birthday);
+			cctable.appendChild(ccTr2);
+			ccTr2.appendChild(ccTd4);
+			ccTr2.appendChild(ccTd5);
+			ccTd4.appendChild(sex_title);
+			ccTd5.appendChild(sex);
+			cctable.appendChild(ccTr3);
+			ccTr3.appendChild(ccTd6);
+			ccTr3.appendChild(ccTd7);
+			ccTd6.appendChild(hobby_title);
+			ccTd7.appendChild(str);
+			cctable.appendChild(ccTr4);
+			ccTr4.appendChild(ccTd8);
+			ccTr4.appendChild(ccTd9);
+			ccTd8.appendChild(note_title);
+			ccTd9.appendChild(note);
+
+		}
+	</script>
+
+	<form name="form1" action="User_Verification.jsp" method="post">
+		姓名-><br>
+		<input type="text" id="username" />
+		<br> 生日->
+		<br>
+		<input type="text" id="birthday" />
+		<br> 性別->
+		<br>
+		<input type="radio" name="sex" value="男"><img src="https://lh5.googleusercontent.com/-93eORAcEkAk/AAAAAAAAAAI/AAAAAAACZ_g/0YZXRvCU69o/s0-c-k-no-ns/photo.jpg" width="50" height="50">
+		<input type="radio" name="sex" value="女"> <img src="http://www.famousbirthdays.com/headshots/emma-watson-3.jpg" width="50" height="50">
+		<input type="radio" name="sex" value="咦?"> <img src="http://www.jiachangba.com/tupian/thumb/0/0189d961d3d980eea5.jpg" width="40" height="50"><br> 興趣->
+
+		<br>
+		<input type="checkbox" name="hobby" value="電影">電影
+		<input type="checkbox" name="hobby" value="吃吃吃">吃吃吃
+		<input type="checkbox" name="hobby" value="運動">運動<br>
+		<input type="checkbox" name="hobby" value="睡覺">睡覺
+		<input type="checkbox" name="hobby" value="小說">小說
+		<input type="checkbox" name="hobby" value="音樂">音樂
+		<br> 自傳->
+		<br>
+		<textarea id="note" ng-model="message" cols="40" rows="10"></textarea>
+		<br><br>
+		<!--button ng-click="save()">Save</button-->
+		<input type="button" name="enter" value="enter" onClick="createTable()">
+		<div id="output">
+
+		</div>
+	</form>
+
+</body>
+<html>
